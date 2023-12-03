@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  fastapi_app:
+    build:
+      context: .
+      dockerfile: Dockerfile_fastapi
+    ports:
+      - "8000:80"
+    networks:
+      - spring_boot_network
+
+  spring_boot_app:
+    build:
+      context: C:\Users\chenb\Downloads\automatedWebServerFinal\automatedWebServerFinal\src\main\java\hit\summer\devops\automatedWebServer
+      dockerfile:  Dockerfile_spring_boot
+    ports:
+      - "8080:8080"
+    networks:
+      - spring_boot_network
+
+networks:
+  spring_boot_network:
+    external: true
+
+#    docker network create spring_boot_network
+#    docker-compose up --build
+
+# docker-compose up --build test-runner
+
+
+# If you made changes to the docker-compose.yml file:
+# docker-compose down
+# docker-compose up --build
+
+# netstat -ano | find "8080"

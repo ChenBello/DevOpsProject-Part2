@@ -1,0 +1,45 @@
+
+#docker-compose up --build
+
+# Dockerfile_test for FastAPI:
+
+# Use an official Uvicorn-Gunicorn-FastAPI image
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the FastAPI app code into the container at /app
+COPY ./ /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port on which FastAPI will run
+EXPOSE 80
+
+# Command to run on container start
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+
+#docker-compose up --build
+#docker-compose up --build test-runner / X
+
+#docker build -t my_fastapi_app . / X
+#docker run -p 8080:80 devopsproject-part2-fastapi_app / X
+
+#docker build -t my-fastapi-app -f .\Dockerfile_fastapi . // latest used
+
+#docker build -t fastapi_app -f .\Dockerfile_fastapi .
+
+#docker-compose up
+#אם יש שינויים בקוד,
+# את תצטרכי לבנות תמונת Docker מחדש על ידי הרצת docker-compose build או docker build.
+
+#docker network create spring_boot_network  // V
+#docker-compose up // V
+
+
+
+
+
